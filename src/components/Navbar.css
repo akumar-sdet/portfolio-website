@@ -1,0 +1,125 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(15, 18, 32, 0.72);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.3s ease;
+}
+
+.navbar.open {
+  background: rgba(15, 18, 32, 0.86);
+}
+
+.navbar-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #f8fafc;
+  text-decoration: none;
+}
+
+/* Menu */
+
+.navbar-menu {
+  display: flex;
+  gap: 1.3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-menu a {
+  color: rgba(248, 250, 252, 0.85);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.55rem 0.75rem;
+  border-radius: 999px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.navbar-menu a:hover {
+  background: rgba(59, 130, 246, 0.18);
+  color: #f8fafc;
+}
+
+/* Mobile Responsive */
+
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1000;
+}
+
+.bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 4px 0;
+  background: #f8fafc;
+  border-radius: 999px;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.navbar.open .bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.navbar.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar.open .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (max-width: 860px) {
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 72px;
+    right: 0;
+    width: min(260px, 100%);
+    height: calc(100vh - 72px);
+    background: rgba(10, 12, 20, 0.95);
+    backdrop-filter: blur(18px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.4rem 1.2rem;
+    gap: 1.1rem;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+  }
+
+  .navbar-menu.active {
+    transform: translateX(0);
+  }
+
+  .navbar-menu a {
+    width: 100%;
+    padding: 0.85rem 1.1rem;
+  }
+}
